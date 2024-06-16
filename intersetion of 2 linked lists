@@ -1,0 +1,12 @@
+Find the intersection point between 2 linked lists
+
+1st approach : find the respective lengths of LL's (5,7) 
+               difference = 2 (now traverse 5 LL with slow pointer as 1
+                               then traverse 7 LL's with fast pointer as 2)
+The moment they collide , that is the intersection node b/w LL's .(if donot collide return null) -O(2M)
+
+
+Optimal approach : create 2 dummey vars they travel the LL's in this the magic is traverse them untill null 
+                   for d1 in LL1(5) , d2 in LL2(7) : once d1 entered NULL add d1 to starting point of LL2 and viceversa
+                   Now they both will be in same lane and the colliding point is intersection point -O(2M)
+
