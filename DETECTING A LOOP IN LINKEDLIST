@@ -1,0 +1,17 @@
+If u start at 1 u will reach 1 again
+![Graph Diagram](https://github.com/ChaitanyaKampara/LINKED_LISTS/assets/136173270/b83ec7e9-c2ff-4a8b-a3af-baa600ae1555)
+
+1st approach : HASHING : It contains count of nodes
+2nd approach : slow*,fast* they will collide  - O(n)
+
+def LOOP(head):
+
+slow = head
+fast = head
+
+if fast is not None and fast.next is not None:            # For linear case 1->2->3->4->NULL (in this case fast can be null or fast.next will be null thats why we are excluding those cases)
+   slow = slow.next
+   fast = fast.next.next
+
+if (slow == fast):
+   print("DETECTED LOOP)
