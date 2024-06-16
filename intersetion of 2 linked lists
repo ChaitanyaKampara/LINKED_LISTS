@@ -1,4 +1,5 @@
 Find the intersection point between 2 linked lists
+![Graph Diagram](https://github.com/ChaitanyaKampara/LINKED_LISTS/assets/136173270/48566917-9cee-4b2a-932e-4a486f4852e8)
 
 1st approach : find the respective lengths of LL's (5,7) 
                difference = 2 (now traverse 5 LL with slow pointer as 1
@@ -10,3 +11,27 @@ Optimal approach : create 2 dummey vars they travel the LL's in this the magic i
                    for d1 in LL1(5) , d2 in LL2(7) : once d1 entered NULL add d1 to starting point of LL2 and viceversa
                    Now they both will be in same lane and the colliding point is intersection point -O(2M)
 
+
+# utility function to insert node at the end of the linked list
+def insertNode(head, val):
+    newNode = Node(val)
+    if head == None:
+        head = newNode
+        return head
+    temp = head
+    while temp.next != None:
+        temp = temp.next
+    temp.next = newNode
+    return head
+
+
+
+
+# utility function to check presence of intersection
+def intersectionPresent(head1, head2):
+    d1 = head1
+    d2 = head2
+    while d1 != d2:
+        d1 = head2 if d1 == None else d1.next
+        d2 = head1 if d2 == None else d2.next
+    return d1
