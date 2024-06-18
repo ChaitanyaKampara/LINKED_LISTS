@@ -1,0 +1,46 @@
+CREATE A STACK AND SEND EVERY ELEMENT INTO IT --- NOW COMPARE TOP ELE IN STACK(LIFO) WITH LL (MEANS U ARE COMPARING LAST ELE WITH 1ST ELE)
+TIME COMPLEXITY : O(2n)
+
+
+
+OPTIMAL APPROACH : MATCH 1ST HALF WITH LAST HALF (1st ele with last ele , 2nd ele with 2nd last ele,..)
+
+CREATE head pointer , tail pointer (coming back is tricky task)
+
+HOW TO PREDICT 2ND HALF ?? ([EVEN] : Take 2 pointers slow , fast if fast->next->next = NULL stop slow pointer )
+                           ([ODD] :  Take 2 pointers slow , fast if fast->next = NULL stop slow pointer[EVEN] ) 
+NOW REVERSE 2ND HALF using our reverse LL function and compare their head pointers and check palindorme or not (IMPORTANTLY REVERSE LL AGAIN TO PREV before answering true or false)
+- O(2N)
+
+def reverse(head):
+if head is None or head.next is None:  (if there is no complete LL , empty or not)
+return head
+new_head = reverse_linked_list(head.next)
+front = head.next
+front.next = head
+head.next = None
+return new_head
+
+def palindrome(head):
+if head is not None or head.next is not None:
+return True
+slow = head
+fast = head
+while fast.next is None and fast.next.next is None:
+slow = slow.next
+fast = fast.next.next
+new_head = reverse_linked_list(slow.next)    (This is used for reversing , selecting new head in 2nd HALF(until slow 1st half ends from slow.next 2nd half starts))
+first = head
+second = new_head
+while second is not None:
+ if(first.data! = second.data):       (if not equals reverse the reversed LL and return false)
+  reverse_linked_list(new_head) 
+  return False
+ first = first.next
+ second = second.next
+reverse_linked_list(new_head)
+return True
+
+
+
+
